@@ -11,7 +11,8 @@ namespace MvcStock.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TblCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,10 +20,12 @@ namespace MvcStock.Models.Entity
         {
             this.TblProducts = new HashSet<TblProduct>();
         }
-    
+
         public short Categoryid { get; set; }
+
+        [Required(ErrorMessage = "Category Name can not be left blank. Please enter Category Name")]
         public string CategoryName { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblProduct> TblProducts { get; set; }
     }

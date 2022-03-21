@@ -23,11 +23,11 @@
             <th>@pr.Productid</th>
             <td>@pr.ProductName</td>
             <td>@pr.ProductBrand</td>
-            <td>@pr.ProductCategory</td>
+            <td>@pr.TblCategory.CategoryName</td>
             <td>@pr.ProductPrice</td>
             <td>@pr.ProductStock</td>
             <td><a href="/Product/Delete/@pr.Productid" class="btn btn-danger">Delete</a></td>
-            <td><a href="/Product/Update/@pr.Productid" class="btn btn-warning">Update</a></td>
+            <td><a href="/Product/PullProduct/@pr.Productid" class="btn btn-warning">Update</a></td>
         </tr>
         }
     </tbody>

@@ -26,9 +26,37 @@ namespace MvcStock.Controllers
         [HttpPost]
         public ActionResult AddCategory(TblCategory p1)
         {
+            if(!ModelState.IsValid)
+            {
+                return View("AddCategory");
+            }
+
             db.TblCategories.Add(p1);
             db.SaveChanges();
             return View();
         }
+
+        public ActionResult Delete(int id)
+        {
+            var category = db.TblCategories.Find(id);
+            db.TblCategories.Remove(category);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult PullCategory(int id)
+        {
+            var ctgr = db.TblCategories.Find(id);
+            return View("PullCategory",ctgr);
+        }
+
+        public ActionResult Update(TblCategory p1)
+        {
+            var ctg=db.TblCategories.Find(p1.Categoryid);
+            ctg.CategoryName=p1.CategoryName;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        
     }
 }
