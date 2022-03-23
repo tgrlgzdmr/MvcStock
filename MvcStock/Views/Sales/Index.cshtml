@@ -1,0 +1,47 @@
+﻿@model MvcStock.Models.Entity.TblSale
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Make a Sale
+</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    Sales Screan
+                </h2>
+                <form method="post" action="/Sales/NewSales">
+                    <div class="modal-body">
+                        <label>
+                            Product Name
+                        </label>
+                        @Html.TextBoxFor(m=>m.SalesProduct, new {@class="form-control"})
+                        <br />
+                        <label>
+                            Customer Name
+                        </label>
+                        @Html.TextBoxFor(m=>m.SalesCustomer, new {@class="form-control"})
+                        <br />
+                        <label>
+                            Sales Numbers
+                        </label>
+                        @Html.TextBoxFor(m=>m.SalesNumbers,new {@class="form-control"})
+                        <br />
+                        <label>
+                            Sales Price
+                        </label>
+                        @Html.TextBoxFor(m=>m.SalesPrice, new {@class="form-control"})
+                        <br />
+                        <button type="submit" class="btn btn-info">Make a Sale</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Exit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

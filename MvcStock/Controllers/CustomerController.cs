@@ -11,10 +11,16 @@ namespace MvcStock.Controllers
     {
         // GET: Customer
         MvcDbStockEntities db = new MvcDbStockEntities();
-        public ActionResult Index()
+        public ActionResult Index(string p2)
         {
-            var values=db.TblCustomers.ToList();
-            return View(values);
+            var values=from d in db.TblCustomers select d;
+            if(!string.IsNullOrEmpty(p2))
+            {
+                values=values.Where(m=>m.CustomerName.Contains(p2));
+            }
+            return View(values.ToList());
+            //var values=db.TblCustomers.ToList();
+            //return View(values);
         }
 
         [HttpGet]

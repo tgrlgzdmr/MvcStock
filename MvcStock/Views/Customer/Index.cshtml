@@ -5,6 +5,14 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
+@using (Html.BeginForm("Index","Customer",FormMethod.Get))
+            {
+                <p>
+                    <b>Customer Name Search:</b> @Html.TextBox("p2")
+                    <input type="submit" value="Search" />
+                </p>
+            }
+
 <table class="table table-bordered">
     <tr>
         <th>CUSTOMER ID</th>
@@ -12,6 +20,7 @@
         <th>CUSTOMER SURNAME</th>
         <th>DELETE</th>
         <th>UPDATE</th>
+        <th>ALERT</th>
     </tr>
     <tbody>
         @foreach (var cus in Model)
@@ -22,6 +31,7 @@
             <td>@cus.CustomerSurname</td>
             <td><a href="/Customer/Delete/@cus.Customerid" class="btn btn-danger">Delete</a></td>
             <td><a href="/Customer/PullCustomer/@cus.Customerid" class="btn btn-warning">Update</a></td>
+            <td>@Html.ActionLink("Delete Button","Delete",new {id=cus.Customerid},new { @class = "btn btn-success", onclick = "return confirm('Are you sure you want to delete?')" })</td>
         </tr>
         }
     </tbody>
